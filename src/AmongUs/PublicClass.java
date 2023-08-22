@@ -3,6 +3,7 @@ package AmongUs;
 
 class Character
 {
+	Skill skill = new Skill();
 	public static int emergencyMeeting = 0; //긴급회의 소집을 활성화 하지 않음
 	public static int vote = 0; //투표를 하지 않음.
 	public static int myLocation = 0; //나의 캐릭터의 위치
@@ -52,9 +53,10 @@ class Crew //크루원
 }
 
 class GuardianAngelGost //수호천사
-{
+{	
 	Character character = new Character();
 	Crew crew = new Crew();
+	Skill skill = new Skill();
 	public static int[] gostColor = new int[15]; //유령이 되면 적용
 	public static double moveSpeed = 3.0; // 이동속도 3
 	public String[] skills = new String[]
@@ -66,6 +68,7 @@ class Scientist
 	Character character = new Character();
 	Crew crew = new Crew();
 	CrewGost cGost = new CrewGost();
+	Skill skill = new Skill();
 	public String[] skills = new String[]
 			{"vitals"}; //과학자는 스킬을 사용할 수 있다.
 //	if(Character.die == 1) //죽으면
@@ -84,6 +87,7 @@ class Technician
 	Character character = new Character();
 	Crew crew = new Crew();
 	CrewGost cGost = new CrewGost();
+	Skill skill = new Skill();
 	public String[] skills = new String[]
 			{"lesser vent"}; //기술자는 스킬을 사용할 수 있다.
 //	if(Character.die == 1) //죽으면
@@ -109,6 +113,7 @@ class Imporster
 {
 	Character character = new Character();
 	InmporsterGost imGost = new  InmporsterGost();
+	Skill skill = new Skill();
 	public static double imporster = Crew.crewView*1.5; //임포스터는 크루윈의 1.5배의 시야를 가진다.
 	public static boolean misssion = false; // 클리어한 민큼 임무 게이지 활성화
 	public String[] skills = new String[]
@@ -124,6 +129,7 @@ class ShapeShifter
 	Character character = new Character();
 	Imporster imporster = new Imporster();
 	InmporsterGost imGost = new  InmporsterGost();
+	Skill skill = new Skill();
 	public String[] skills = new String[]
 			{"kill", "savotage", "vent", "shapeshift"};  //일반적인 임포스터보다 스킬이 하나 더 있다.
 //	if(Character.die == 1) //만약 die가 1이 되면
@@ -145,13 +151,6 @@ class InmporsterGost
 class Skill
 {
 	Character character = new Character();
-	Crew crew = new Crew();
-//	GuardianAngelGost guard = GuardianAngelGost();
-	Scientist scientist = new Scientist();
-	Technician technicion = new Technician();
-	Imporster imporster = new Imporster();
-	ShapeShifter shapeshifter = new ShapeShifter();
-	InmporsterGost imGost = new  InmporsterGost();
 	public int coolTime = 0; //스킬의 쿨타임
 	public int duration = 0; //스킬의 지속시간
 	public int savotage1 = 0; //빙해공작 활성화 여부
@@ -167,9 +166,9 @@ class Skill
 	public String kill = "kill";
 	void kill()
 	{
-//		if(Character.range<=3&&Character.colorSelect==Crew.class) //캐릭터간 거리가 3 안쪽이고 대상이 크루원이면
+//		if(Character.otherLocation-Character.myLocation <= 3) //캐릭터간 거리가 3 이하라면
 //		{
-//			Character.die=Crew.class; //사망한다.
+//			Character.die = 1; //사망한다.
 //			coolTime=35;
 //		}
 	}
