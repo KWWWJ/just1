@@ -17,7 +17,8 @@ class Character
 	public static String moveDown = "s"; //s를 누르면 아래로 이동
 	public static String moveRight = "d"; //d를 누르면 오른쪽로 이동
 	public static String moveLeft = "a"; //a를 누르면 왼쪽으로 이동
-	public static String[] allSkills = new String[]{"report", "emergencyMeeting","lever"};
+	public static String[] allSkills = new String[]
+			{"report", "emergencyMeeting","lever"};
 	//if (color == main.colorSelet) //선택한 색상이 존재한다면
 	//{
 	//colorClose=false; // 그 색상을 더이상 선택 불가능한 상태로 변경
@@ -33,7 +34,7 @@ class Crew //크루원
 	public static double crewView = 1.0; //크루원 기본 시야
 	public static int doMission =0; //크루원은 미션을 할 수 있다.
 	int missionCount = 0;
-//	if (missionCount == 4) // 정해진 만큼의 미션을 전부 클리어 했다면
+//	if (missionCount == 4) // 미션을 전부 클리어 했다면
 //	{
 //		Character.misssion = false; //캐릭터는 미션을 수행할 수 없다.
 //	}
@@ -56,7 +57,8 @@ class GuardianAngelGost //수호천사
 	Crew crew = new Crew();
 	public static int[] gostColor = new int[15]; //유령이 되면 적용
 	public static double moveSpeed = 3.0; // 이동속도 3
-	public String[] skills = new String[]{"guard"}; //유령이 되면 스킬 활성화
+	public String[] skills = new String[]
+			{"guard"}; //유령이 되면 스킬 활성화
 }
 
 class Scientist
@@ -64,10 +66,11 @@ class Scientist
 	Character character = new Character();
 	Crew crew = new Crew();
 	CrewGost cGost = new CrewGost();
-	public String[] skills = new String[]{"vitals"};
+	public String[] skills = new String[]
+			{"vitals"}; //과학자는 스킬을 사용할 수 있다.
 //	if(Character.die == 1) //죽으면
 //	{
-//		CrewGost.gostColor; //유령상태가 활성화된다.(반투명한 색으로 변환)
+//		CrewGost.gostColor;
 //		dieCount++;	
 //		else if(dieCount == 1)
 //		{
@@ -81,10 +84,11 @@ class Technician
 	Character character = new Character();
 	Crew crew = new Crew();
 	CrewGost cGost = new CrewGost();
-	public String[] skills = new String[]{"lesser vent"};
+	public String[] skills = new String[]
+			{"lesser vent"}; //기술자는 스킬을 사용할 수 있다.
 //	if(Character.die == 1) //죽으면
 //	{
-//		CrewGost.gostColor; //유령상태가 활성화된다.(반투명한 색으로 변환)
+//		CrewGost.gostColor;
 //		dieCount++;	
 //		else if(dieCount == 1)
 //		{
@@ -107,10 +111,11 @@ class Imporster
 	InmporsterGost imGost = new  InmporsterGost();
 	public static double imporster = Crew.crewView*1.5; //임포스터는 크루윈의 1.5배의 시야를 가진다.
 	public static boolean misssion = false; // 클리어한 민큼 임무 게이지 활성화
-	public String[] skills = new String[]{"kill", "savotage", "vent"};//기본적인 임포스터의 스킬은 킬, 방해공작, 환퉁구를 통한 순간이동이다.
+	public String[] skills = new String[]
+			{"kill", "savotage", "vent"};  //기본적인 임포스터의 스킬은 킬, 방해공작, 환퉁구를 통한 순간이동이다.
 //	if(Character.die == 1) //만약 die가 1이 되면
 //	{
-//		ImporsterGost.gostColor; //유령상태가 활성화된다.(반투명한 색으로 변환)
+//		ImporsterGost.gostColor; 
 //	}
 }
 
@@ -119,10 +124,11 @@ class ShapeShifter
 	Character character = new Character();
 	Imporster imporster = new Imporster();
 	InmporsterGost imGost = new  InmporsterGost();
-	public String[] skills = new String[]{"kill", "savotage", "vent", "shapeshift"};//일반적인 임포스터보다 스킬이 하나 더 있다.
+	public String[] skills = new String[]
+			{"kill", "savotage", "vent", "shapeshift"};  //일반적인 임포스터보다 스킬이 하나 더 있다.
 //	if(Character.die == 1) //만약 die가 1이 되면
 //	{
-//		ImporsterGost.gostColor; //유령상태가 활성화된다.(반투명한 색으로 변환)
+//		ImporsterGost.gostColor; 
 //	}
 }
 
@@ -146,17 +152,18 @@ class Skill
 	Imporster imporster = new Imporster();
 	ShapeShifter shapeshifter = new ShapeShifter();
 	InmporsterGost imGost = new  InmporsterGost();
-	public int coolTime = 0;
-	public int duration = 0;
-	public int savotage1 = 0;
-	public int vent1 = 0;
-	public int vent2 = 0;
-	public int vent3 = 0;
-	public int vent4 = 0;
-	public int vent5 = 0;
-	public int vent6 = 0;
-	public int shapeshift1 = 0;
-	//kill, savotage, vent, shapeshift, guard, vitals,lesser vent
+	public int coolTime = 0; //스킬의 쿨타임
+	public int duration = 0; //스킬의 지속시간
+	public int savotage1 = 0; //빙해공작 활성화 여부
+	public int vent1 = 0; //밴트 1번
+	public int vent2 = 0; //밴트 2번
+	public int vent3 = 0; //밴트 3번
+	public int vent4 = 0; //밴트 4번
+	public int vent5 = 0; //밴트 5번
+	public int vent6 = 0; //밴트 6번
+	public int shapeshift1 = 0; //형상변환자 활성화 여부
+	public int win = 0; //승리
+	
 	public String kill = "kill";
 	void kill()
 	{
@@ -179,7 +186,7 @@ class Skill
 //			System.out.println("원자로 융해 45초");
 //			if (savotage1 = 0)
 //			{
-//				imporster = win;	
+//				win = 1;	
 //			}		
 //		}		
 //		if(savotage1 == 3)
@@ -187,7 +194,7 @@ class Skill
 //				System.out.println("산소고갈 45초");
 //				if (savotage1 = 0)
 //				{
-//					imporster = win;	
+//					win = 1;
 //				}		
 //			}		
 //		if(savotage1 == 4)
@@ -195,7 +202,7 @@ class Skill
 //				System.out.println("지반 안정화 장치 초기화 60초");
 //				if (savotage1 = 0)
 //				{
-//					imporster = win;	
+//					win = 1;
 //				}		
 //			}		
 //		if(savotage == 5)
@@ -203,7 +210,7 @@ class Skill
 //				System.out.println("충돌 항로 방지 초기화 90초");
 //				if (savotage1 = 0)
 //				{
-//					imporster = win;	
+//					win = 1;
 //				}		
 //			}		
 		
