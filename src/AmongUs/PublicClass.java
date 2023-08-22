@@ -86,6 +86,7 @@ class CrewGost
 	Crew crew = new Crew();
 	//유령이 되면 적용
 	public static double moveSpeed = 3.0; // 이동속도 3
+	//
 }
 
 class Imporster
