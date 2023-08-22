@@ -5,13 +5,14 @@ class Character
 {
 	public static int emergencyMeeting = 0; //긴급회의 소집을 활성화 하지 않음
 	public static int vote = 0; //투표를 하지 않음.
-	public static int range = 0; //캐릭터 사이의 거리
+	public static int myLocation = 0; //나의 캐릭터의 위치
+	public static int otherLocation = 0;//다른 사람의 캐릭터의 위치
 	public static double moveSpeed = 1.0; // 이동속도 1
 	public static boolean missionUpdate = true; //미션 업데이트 항상 활성화
-	public static boolean misssion = true; // 클리어한 민큼 임무 게이지 활성화
+	public static boolean misssion = true; // 클리어한 만큼 임무 게이지 활성화
 	public static String nicName = " "; //유저정보로 부터 가져옴
 	public static int colorSelet = 0; //캐릭터 색상 선택
-	public static int[] die = new int[4]; //사망하면 인덱스 0부터 삽입.
+	public static int die = 0; //사망하면 1로 활성화
 	public static String moveUp = "w"; //w를 누르면 위로 이동
 	public static String moveDown = "s"; //s를 누르면 아래로 이동
 	public static String moveRight = "d"; //d를 누르면 오른쪽로 이동
@@ -23,31 +24,33 @@ class Character
 	//}
 }
 
-class Crew
+class Crew //크루원
 {
+	int dieCount = 0;
 	Character character = new Character();
 	CrewGost cGost = new CrewGost();
 	//GuardianAngelGost guard = GuardianAngelGost();
-	public static double crewView = 1.0; //크루원 기본 시야=1
+	public static double crewView = 1.0; //크루원 기본 시야
 	public static int doMission =0; //크루원은 미션을 할 수 있다.
 	int missionCount = 0;
 //	if (missionCount == 4) // 정해진 만큼의 미션을 전부 클리어 했다면
 //	{
 //		Character.misssion = false; //캐릭터는 미션을 수행할 수 없다.
 //	}
-//	if(Character.die[] == Charater.colorSelet) //죽으면
+//	if(Character.die == 1) //죽으면
 //	{
-//		CrewGost.gostColor = ; //유령상태가 활성화된다.(반투명한 색으로 변환)
-//	else if(Charater.die[0] == Charater.colorSelet)
+//		CrewGost.gostColor; //유령상태가 활성화된다.(반투명한 색으로 변환)
+//		dieCount++;	
+//	else if(dieCount == 1)
 //	{
-//		Charater.colorSelet == GuardianAngelGost.class;
+//		Charater.colorSelet == GuardianAngelGost.class; 
 //	}	
 //	}
 	
 	
 }
 
-class GuardianAngelGost
+class GuardianAngelGost //수호천사
 {
 	Character character = new Character();
 	Crew crew = new Crew();
@@ -62,10 +65,15 @@ class Scientist
 	Crew crew = new Crew();
 	CrewGost cGost = new CrewGost();
 	public String[] skills = new String[]{"vitals"};
-//	if(Character.die[] == Charater.colorSelet) //죽으면
+//	if(Character.die == 1) //죽으면
+//	{
+//		CrewGost.gostColor; //유령상태가 활성화된다.(반투명한 색으로 변환)
+//		dieCount++;	
+//		else if(dieCount == 1)
 //		{
-//			CrewGost.gostColor = ;
-//      }	
+//			Charater.colorSelet == GuardianAngelGost.class; 
+//		}	
+//	}
 }
 
 class Technician
@@ -74,10 +82,15 @@ class Technician
 	Crew crew = new Crew();
 	CrewGost cGost = new CrewGost();
 	public String[] skills = new String[]{"lesser vent"};
-//	if(Character.die[] == Charater.colorSelet) //죽으면
+//	if(Character.die == 1) //죽으면
+//	{
+//		CrewGost.gostColor; //유령상태가 활성화된다.(반투명한 색으로 변환)
+//		dieCount++;	
+//		else if(dieCount == 1)
 //		{
-//			CrewGost.gostColor = ;
-//      }	
+//			Charater.colorSelet == GuardianAngelGost.class; 
+//		}	
+//	}
 }
 
 class CrewGost
@@ -86,7 +99,6 @@ class CrewGost
 	Crew crew = new Crew();
 	//유령이 되면 적용
 	public static double moveSpeed = 3.0; // 이동속도 3
-	//
 }
 
 class Imporster
@@ -98,7 +110,7 @@ class Imporster
 	public String[] skills = new String[]{"kill", "savotage", "vent"};//기본적인 임포스터의 스킬은 킬, 방해공작, 환퉁구를 통한 순간이동이다.
 //	if(Character.die == 1) //만약 die가 1이 되면
 //	{
-//		ImporsterGost.gostColor = ; //유령상태가 활성화된다.(반투명한 색으로 변환)
+//		ImporsterGost.gostColor; //유령상태가 활성화된다.(반투명한 색으로 변환)
 //	}
 }
 
@@ -108,6 +120,10 @@ class ShapeShifter
 	Imporster imporster = new Imporster();
 	InmporsterGost imGost = new  InmporsterGost();
 	public String[] skills = new String[]{"kill", "savotage", "vent", "shapeshift"};//일반적인 임포스터보다 스킬이 하나 더 있다.
+//	if(Character.die == 1) //만약 die가 1이 되면
+//	{
+//		ImporsterGost.gostColor; //유령상태가 활성화된다.(반투명한 색으로 변환)
+//	}
 }
 
 class InmporsterGost
