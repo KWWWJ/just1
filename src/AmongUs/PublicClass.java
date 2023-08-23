@@ -4,7 +4,6 @@ package AmongUs;
 class Character
 {
 	Gost gost = new  Gost(); // 유령상태를 모든 캐릭터가 공유
-	public String characterjob = " ";
 	public int emergencyMeeting = 0; //긴급회의 소집을 활성화 하지 않음
 	public int vote = 0; //투표를 하지 않음.
 	public int myLocation = 0; //나의 캐릭터의 위치
@@ -36,7 +35,7 @@ class Character
 
 class Crew extends Character //상속
 {
-	String characterjob = "Crew";
+	public String characterjob = "Crew";
 	GuardianAngelGost angel = new GuardianAngelGost();
 	int dieCount = 0;
 	Skill skill = new Skill(); //공통 스킬
@@ -56,25 +55,25 @@ class Crew extends Character //상속
 
 class GuardianAngelGost extends Gost //수호천사
 {	
-	String characterjob = "GuardianAngelGost";
+	public String characterjob = "GuardianAngelGost";
 	SkillGuardianAngelGost skill = new SkillGuardianAngelGost(); //수호천사 스킬
 }
 
 class Scientist extends Crew
 {
-	String characterjob = "Scientist";
+	public String characterjob = "Scientist";
 	SkillScientist skill = new SkillScientist(); //과학자 스킬
 }
 
 class Technician extends Crew
 {
-	String characterjob = "Technician";
+	public String characterjob = "Technician";
 	SkillTechnician skill = new SkillTechnician(); //기술자 스킬
 }
 
 class Imporster extends Crew
 {
-	String characterjob = "Imporster";
+	public String characterjob = "Imporster";
 	SkillImporster skill = new SkillImporster(); //임포스터 공통 스킬
 	public double imporster = crewView*1.5; //임포스터는 크루윈의 1.5배의 시야를 가진다.
 	public boolean misssion = false; // 클리어한 민큼 임무 게이지 활성화
@@ -82,7 +81,7 @@ class Imporster extends Crew
 
 class ShapeShifter extends Imporster
 {
-	String characterjob = "ShapeShifter";
+	public String characterjob = "ShapeShifter";
 	SkillShapeShifter skill = new SkillShapeShifter(); //형상변환자 스킬
 }
 
@@ -93,7 +92,10 @@ class Gost extends Character
 	public static int[] gostColor = new int[15]; //유령이 되면 반투명 색상 적용
 	void kill() //킬 버튼이
 	{
-		die = 2; //아무런 효력도 가지지 못한다.
+		if(die == 1)
+		{
+			return;
+		}
 	}
 }
 
@@ -108,13 +110,17 @@ class Skill
 	public int vent4 = 0; //밴트 4번
 	public int vent5 = 0; //밴트 5번
 	public int vent6 = 0; //밴트 6번
+	public int meetingTime = 0; //시스템 룰인 회의 시간
+	public int voteTime = 0; //시스템 룰인 투표 시간
+	public boolean doorOpen = false; //활성화 안됨
+	public boolean lightOn = false; //활성화 안됨
 
 	void emergencyMeeting()
 	{
 		if(character.allSkills[0] == "emergencyMeeting") //긴급 회의가 활성화되면
 		{
-			int meetingTime = 15; // 시스템 룰인 회의 시간을 호출한다.
-			int voteTime = 120; //시스템 룰인 투표 시간을 호출한다.
+			meetingTime = 15; // 시스템 룰인 회의 시간을 호출한다.
+			voteTime = 120; //시스템 룰인 투표 시간을 호출한다.
 		}
 	}
 	
@@ -122,8 +128,8 @@ class Skill
 	{
 		if(character.allSkills[1] == "report") //
 		{
-			int meetingTime = 15; // 시스템 룰인 회의 시간을 호출한다.
-			int voteTime = 120; //시스템 룰인 투표 시간을 호출한다.
+			meetingTime = 15; // 시스템 룰인 회의 시간을 호출한다.
+			voteTime = 120; //시스템 룰인 투표 시간을 호출한다.
 		}
 	}
 	
@@ -131,8 +137,8 @@ class Skill
 	{
 		if(character.allSkills[2] == "lever") // 레버 활성화 시
 		{
-			boolean doorOpen=true; //문 열림
-			boolean lightOn=true; //시야 회복됨
+			doorOpen=true; //문 열림
+			lightOn=true; //시야 회복됨
 		}
 	}
 }
