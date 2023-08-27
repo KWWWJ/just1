@@ -2,12 +2,6 @@ package PixyHands.Card;
 
 public class AttackCard extends BasicCard{
 	
-	private String nameCard;
-	private String description;
-	private String giveItem[] giveItem; 
-	private int damage;
-	private int cost;
-	
 	public void AttackCard1()
 	{
 		nameCard = "공격카드";

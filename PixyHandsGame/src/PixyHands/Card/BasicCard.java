@@ -4,7 +4,6 @@ public abstract class BasicCard {
 	
 	private String nameCard;
 	private String description;
-	private String giveItem[] giveItem; 
 	private int damage;
 	private int cost;
 	
