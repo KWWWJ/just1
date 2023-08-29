@@ -10,11 +10,13 @@ public class Calculator implements CalcInterface {
 		case "*" :
 			return CalcInterface.super.multiply(nums);
 		case "/" :
-			return CalcInterface.super.slash(nums);
+			return CalcInterface.super.divide(nums);
 		case "%" :
 			return CalcInterface.super.remain(nums);
 		case "^" :
 			return CalcInterface.super.square(nums);
+		case "r" :
+			return CalcInterface.super.root(nums);
 		default:
 			return 0;
 		}
