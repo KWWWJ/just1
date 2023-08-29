@@ -4,9 +4,10 @@ public interface CalcInterface extends
 	AddInterface,
 	MinusInterface,
 	MultipiyInterface,
-	SlashInterface,
+	DivideInterface,
 	RemainInterface,
-	SquareInterface {
+	SquareInterface,
+	RootInterface {
 	public default double add(double...nums) {//...num는 받은 변수를 일괄적으로 처리, nums는 배열
 		double temp=0;
 		for(double num : nums) {
@@ -29,10 +30,10 @@ public interface CalcInterface extends
 		}
 		return temp;
 	}
-	public default double slash(double...nums) {
+	public default double divide(double...nums) {
 		double temp= nums[0];
 		for(int i=1; i<nums.length; i++) {
-			temp = SlashInterface.super.slash(temp, nums[i]);
+			temp = DivideInterface.super.divide(temp, nums[i]);
 		}
 		return temp;
 	}
@@ -47,6 +48,13 @@ public interface CalcInterface extends
 		double temp= nums[0];
 		for(int i=1; i<nums.length; i++) {
 			temp = SquareInterface.super.square(temp, nums[i]);
+		}
+		return temp;
+	}
+	public default double root(double...nums) {
+		double temp= nums[0];
+		for(int i=1; i<nums.length; i++) {
+			temp = RootInterface.super.root(temp);
 		}
 		return temp;
 	}
