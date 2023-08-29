@@ -8,17 +8,22 @@ public class Main {
 		Scanner scan = new Scanner(System.in);
 		Calculator calc = new Calculator();
 		
-		System.out.println("첫번째 숫자 입력");
+		System.out.println("첫번째 숫자 입력[100000 입력 시 종료]");
 	 	double input1 = scan.nextDouble();
 	 	while(true) {
-		 	System.out.println("계산 연산자 입력[+, -, *, /, %(나머지), ^(제곱), s(종료)]");
+	 		if(input1 == 100000) {
+				System.out.println("종료");
+				break;
+			}
+		 	System.out.println("\n계산 연산자 입력[+, -, *, /, %(나머지), ^(제곱)]");
 			String input = scan.next();
-			if (input == "s") return;
-		 	System.out.println("두번째 숫자 입력");
+		 	System.out.println("두번째 숫자 입력 \n");
 			double input2 = scan.nextDouble();
 			double result = calc.calculate(input, input1, input2);
-			System.out.println(result);
+			System.out.printf("결과 : %.2f",result);
 			input1=result;
+			
+			
 	 	}
 	}
 }
