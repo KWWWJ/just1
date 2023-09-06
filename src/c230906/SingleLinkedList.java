@@ -1,6 +1,5 @@
 package c230906;
 
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 class Node<T>{
@@ -22,12 +21,12 @@ class SLLStack<T>{
 	}
 	private Node<T> search(int index){
 		
-		Node<T> last = top;
+		Node<T> start = floor;
 		
 		for (int i=0; i<index; i++) {
-			last = last.next;
+			start = start.next;
 		}
-		return last;
+		return start;
 	}
 	public void floor(T push) {
 		Node<T> newNode = new Node<>(push);
@@ -35,9 +34,9 @@ class SLLStack<T>{
 		floor = newNode;
 		size++;
 		
-//		if(top.next == null) {
-//			floor = top;
-//		}
+		if(floor.next == null) {
+			floor = top;
+		}
 		
 	}
 	public void add(T push) {
@@ -50,32 +49,8 @@ class SLLStack<T>{
 			top = newNode;
 			size++;
 	}
-	public T remove() {
-		Node<T> floorNode = floor;
-		if(floorNode == null) {
-			throw new NoSuchElementException();
-		}
-		T element = floorNode.data;
-		
-		Node<T> nextNode = floor.next;
-		
-		floor.data = null;
-		floor.data = null;
-		
-		floor = nextNode;
-		size--;
-		
-		if(size == 0) {
-			top = null;
-		}
-		return element;
-	}
+	
 	public T remove(int index) {
-		
-		if(index == 0) {
-			return remove();
-		}
-		
 		
 		Node<T> prevNode = search(index - 1);
 		Node<T> removeNode = prevNode.next;
@@ -98,6 +73,7 @@ class SLLStack<T>{
 		return size == 0;
 	}
 	public T get(int index) {
+		
 		return search(index).data;
 	}
 	
@@ -113,19 +89,19 @@ public class SingleLinkedList {
 		int input;
 		
 		System.out.println("추가할 데이터를 입력");
-		for(int i=0; i<=3; i++) {
+//		for(int i=0; i>=0; i++) {
 			input = scan.nextInt();
 			stack.add(input);
-		}
+//		}
 		System.out.println("저장");
-		for(int i=0; i<stack.get(i); i++) {
-			System.out.println(stack.get(i));
-		}
 		
+//		for(int i=0; i<stack.get(i); i++) {
+//			System.out.println(stack.get(i));
+//		}
+		System.out.println(stack.get(0));
+		System.out.println("=====================");
+		System.out.println("차감순");
 			
-			
-		
-		
 	}
 	
 }
