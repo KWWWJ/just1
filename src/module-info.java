@@ -1,0 +1,2 @@
+module Education02 {
+}
