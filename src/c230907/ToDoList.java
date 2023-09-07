@@ -42,12 +42,12 @@ public class ToDoList{
 			Iterator<String> iterator = myList.list.iterator();
 			for(int i=0; i<myList.list.size(); i++) {
 				if(iterator.next() == inputRanking+"."+inputMydo) {
-					System.out.println("이미 입력한 스케쥴입니다."); //동작하지 않음
+					System.out.println("이미 입력한 스케쥴입니다."); //조건 수정 필요
 					inputRanking = null;
 					inputMydo = null;
 				}
 				else {
-					System.out.println("동작");
+//					System.out.println("동작"); //동작 확인
 				}
 			}
 			myList.list.add(wd.add(inputRanking, inputMydo));
