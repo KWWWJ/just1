@@ -13,12 +13,12 @@ public class BoardList {
 	
 	protected ArrayList<BoardItem> itemList = new ArrayList<>();
 	
-	public void add(String now, String title, String content) {
-		BoardItem temp = new BoardItem(now, title, content);
+	public void add(String now, String title, String content, String comment) {
+		BoardItem temp = new BoardItem(now, title, content, comment);
 		itemList.add(temp);
 	}
-	public void set(int titleNum, String now, String title, String content) {
-		BoardItem temp = new BoardItem(now, title, content);
+	public void set(int titleNum, String now, String title, String content, String comment) {
+		BoardItem temp = new BoardItem(now, title, content, comment);
 		itemList.set(titleNum, temp);
 	}
 	
