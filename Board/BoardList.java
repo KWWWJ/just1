@@ -10,6 +10,7 @@ public class BoardList {
 	private SimpleDateFormat  sdf = new SimpleDateFormat ("yyyy/MM/dd HH:mm:ss a");
 	protected String now = sdf.format(d);
 	protected int titleNum;
+	private int index;
 	
 	protected ArrayList<BoardItem> itemList = new ArrayList<>();
 	
@@ -21,43 +22,38 @@ public class BoardList {
 		BoardItem temp = new BoardItem(now, title, content, comment);
 		itemList.set(titleNum, temp);
 	}
-	
-	
-	@Override
-	public String toString() {
+	public boolean getIndex(int index) {
+		this.index = index;
+		if(index > itemList.size()) {
+			System.out.println("존재하지 않는 글입니다.");
+			return false;
+		}
+		return true;
+	}
+	public String getListAll() {
 		StringBuilder sb = new StringBuilder();
 		int count = 0;
 		int result = itemList.size();
 		while(result>count) {
 			for(BoardItem item : itemList) {
 				sb.append("\n"+ ++count+".");
-				sb.append(item.toString());
+				sb.append(item.getListAll());
 			}
 		}
 		return sb.toString();
 	}
-	public String toString1() { //제목에 대한 목록
+	public String getTitle() {
 		StringBuilder sb = new StringBuilder();
 		int count = 0;
 		int result = itemList.size();
 		while(result>count) {
 			for(BoardItem item : itemList) {
 				sb.append("\n"+ ++count+".");
-				sb.append(item.toString1());
+				sb.append(item.getTitle());
 			}
 		}
 		return sb.toString();
 	}
-//	public void test() {
-//		add(now+"\n", "제목1 \n", "내용1 \n");
-//		add(now+"\n", "제목2 \n", "내용2 \n");
-//		add(now+"\n", "제목3 \n", "내용3 \n");
-//		add(now+"\n", "제목4 \n", "내용4 \n");
-//		System.out.println("===================");
-//		System.out.println(itemList);
-//		System.out.println("===================");
-//		System.out.println(this);
-//	}
 	
 }
  

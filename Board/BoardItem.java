@@ -15,15 +15,11 @@ public class BoardItem {
 		this.title = title;
 		this.comment = comment;
 	}
-	public BoardItem(String now, String title) {//set으로 내용 수정시 사용
-		this.now = now;
-		this.title = title;
-	}
-	@Override
-	public String toString() {
+
+	public String getListAll() {
 		return "제목 : "+title+"\n내용 : "+content+"\n댓글 : "+comment+"\n저장일 : "+now;
 	}
-	public String toString1() { //제목만 따로 출력
+	public String getTitle() { //제목만 따로 출력
 		return "제목 : "+title;
 	}
 }
