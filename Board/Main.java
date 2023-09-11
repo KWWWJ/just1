@@ -5,12 +5,14 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 		BoardList list = new BoardList();
+		BoardComment bc = new BoardComment();
 		//	list.test();
 		
 		System.out.println("게시판");
 		Scanner scan1 = new Scanner(System.in);
 		Scanner scan2 = new Scanner(System.in);
 		int titleNum = 0;
+		int count =0;
 		String writingTitle = " ";
 		String writingContent = " ";
 		String reWritingTitle = " ";
@@ -27,7 +29,7 @@ public class Main {
 				writingTitle = scan2.nextLine();
 				System.out.println("내용을 입력해주세요.");
 				writingContent = scan2.nextLine();
-				list.add(list.now, writingTitle, writingContent, comment);
+				list.addList(list.now, writingTitle, writingContent);
 				System.out.println("글이 저장되었습니다.");
 				break;
 			case 2:
@@ -37,6 +39,8 @@ public class Main {
 					break;
 				}
 				System.out.println(list.itemList.get(titleNum).getListAll());
+				System.out.println();
+				System.out.println(bc.getListAll()); //인덱스 범위 지정해서 count증가 할때마다 불러올 수 있는 범위도 들어나게 작성
 				break;
 			case 3:
 				System.out.println("수정할 글의 번호를 선택해주세요.");
@@ -48,7 +52,7 @@ public class Main {
 				reWritingTitle = scan2.nextLine();
 				System.out.println("내용을 입력해주세요.");
 				reWritingContent = scan2.nextLine();
-				list.set(titleNum, list.now, reWritingTitle, reWritingContent, comment);
+				list.setList(titleNum, list.now, reWritingTitle, reWritingContent);
 				System.out.println("글이 저장되었습니다.");
 				break;
 			case 4:
@@ -59,7 +63,8 @@ public class Main {
 				}
 				System.out.println("글을 작성해주세요.");
 				comment = scan2.nextLine();
-				list.set(titleNum, list.now, reWritingTitle, reWritingContent, comment);
+				bc.setComment(count, list.now, comment);
+				count++;
 				break;
 			default:
 				System.out.println("잘못된 접근입니다.");

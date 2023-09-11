@@ -7,21 +7,22 @@ import java.util.Date;
 public class BoardList {
 	
 	private Date d = new Date();
-	private SimpleDateFormat  sdf = new SimpleDateFormat ("yyyy/MM/dd HH:mm:ss a");
-	protected String now = sdf.format(d);
+	private SimpleDateFormat  ListSDF = new SimpleDateFormat ("yyyy/MM/dd HH:mm:ss a");
+	protected String now = ListSDF.format(d);
 	protected int titleNum;
 	private int index;
 	
 	protected ArrayList<BoardItem> itemList = new ArrayList<>();
 	
-	public void add(String now, String title, String content, String comment) {
-		BoardItem temp = new BoardItem(now, title, content, comment);
+	public void addList(String now, String title, String content) {
+		BoardItem temp = new BoardItem(now, title, content);
 		itemList.add(temp);
 	}
-	public void set(int titleNum, String now, String title, String content, String comment) {
-		BoardItem temp = new BoardItem(now, title, content, comment);
+	public void setList(int titleNum, String now, String title, String content) {
+		BoardItem temp = new BoardItem(now, title, content);
 		itemList.set(titleNum, temp);
 	}
+	
 	public boolean getIndex(int index) {
 		this.index = index;
 		if(index > itemList.size()) {
@@ -30,11 +31,10 @@ public class BoardList {
 		}
 		return true;
 	}
-	public String getListAll() {
+	public String getListAll() { 
 		StringBuilder sb = new StringBuilder();
 		int count = 0;
-		int result = itemList.size();
-		while(result>count) {
+		while(itemList.size()>count) {
 			for(BoardItem item : itemList) {
 				sb.append("\n"+ ++count+".");
 				sb.append(item.getListAll());
@@ -42,11 +42,10 @@ public class BoardList {
 		}
 		return sb.toString();
 	}
-	public String getTitle() {
+	public String getTitle() { //제목에 대한 목록
 		StringBuilder sb = new StringBuilder();
 		int count = 0;
-		int result = itemList.size();
-		while(result>count) {
+		while(itemList.size()>count) {
 			for(BoardItem item : itemList) {
 				sb.append("\n"+ ++count+".");
 				sb.append(item.getTitle());

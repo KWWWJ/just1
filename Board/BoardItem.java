@@ -9,17 +9,22 @@ public class BoardItem {
 	private String content;
 	private String comment;
 	
-	public BoardItem(String now, String title, String content, String comment) {
+	public BoardItem(String now, String title, String content) {
 		this.now = now;
 		this.content = content;
 		this.title = title;
-		this.comment = comment;
 	}
-
+	public BoardItem(String now, String comment) {
+		this.comment = comment;
+		this.now = now;
+	}
 	public String getListAll() {
-		return "제목 : "+title+"\n내용 : "+content+"\n댓글 : "+comment+"\n저장일 : "+now;
+		return "제목 : "+title+"\n내용 : "+content+"\n저장일 : "+now;
 	}
 	public String getTitle() { //제목만 따로 출력
 		return "제목 : "+title;
+	}
+	public String getComment() {
+		return "댓글 : "+comment+" ["+now+"]";
 	}
 }
