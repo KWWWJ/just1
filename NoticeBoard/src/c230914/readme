@@ -1,0 +1,117 @@
+230914 Query문
+
+--alter table student drop constraint fk_student_hobby;
+
+drop table hobby;
+drop table student;
+
+create table student(
+    id number(8, 0) generated as identity CONSTRAINT pk_student PRIMARY KEY,
+    name varchar2(10) not null,
+    student_id varchar2(30) not NULL unique,
+    student_pw varchar2(30) not NULL unique,
+    age number(3),
+    git_address varchar2(50),
+    hobby_id number(10, 0)
+);
+
+insert into student (name, student_id, student_pw, age, git_address, hobby_id) values('김동선','KDS','qwer',29,'KDS01', 1);
+insert into student (name, student_id, student_pw, age, git_address, hobby_id) values('이민규','qq752','1234',24,'hLEEMINGYU28/Java4.git', 2);
+insert into student (name, student_id, student_pw, age, git_address, hobby_id) values('권원준','oooonx','may', 22,'KWWWJ/just1.git', null);
+insert into student (name, student_id, student_pw, age, git_address, hobby_id) values('박정완','pjw','qwer1', 27, 'pjw222/HomeWork2', null);
+insert into student (name, student_id, student_pw, age, git_address, hobby_id) values('한상윤','hsy','qwer1234',37,'Natseol', null);
+insert into student (name, student_id, student_pw, age, git_address, hobby_id) values('임현규','TLM','486',27,'mabiTLM/Java4', null);
+insert into student (name, student_id, student_pw, age, git_address, hobby_id) values('김남균','knk','12345',27,'LiamKim-0218/HomeWork2', null);
+insert into student (name, student_id, student_pw, age, git_address, hobby_id) values('임주한','LJH','3232',32,'Juhan008/java-D', null);
+
+create table hobby(
+    id number(10, 0) generated as identity CONSTRAINT pk_id_hobby PRIMARY KEY,
+    name varchar2(20),
+    explane varchar2(50),
+    create_at timestamp default sysdate,
+    average_time number(30, 0),
+    locate varchar2(50),
+    student_id number(8, 0),
+    constraint fk_hobby_student_1d foreign key (student_id) references student (id) 
+);
+
+insert into hobby (name, explane, average_time, locate, student_id) values('독서', '인터넷 상의 소설을 읽는다.', 3600000, '실내', 1);
+insert into hobby (name, explane, average_time, locate, student_id) values('헬스', '운동을 통해 근육을 늘리는 것', 3600000, '헬스장', 2);
+
+alter table student add constraint fk_student_hobby foreign key (hobby_id) references hobby (id); //1대1 관계 이거 없으면 1대 n관계
+
+
+
+==================================================================================================================================================================
+
+
+--alter table student drop constraint fk_student_hobby;
+drop table student_hobby;
+drop table hobby;
+drop table student;
+
+
+create table student(
+    id number(8, 0) generated as identity CONSTRAINT pk_student PRIMARY KEY,
+    name varchar2(10) not null,
+    student_id varchar2(30) not NULL unique,
+    student_pw varchar2(30) not NULL unique,
+    age number(3),
+    git_address varchar2(50)
+--    hobby_id number(10, 0)
+);
+
+insert into student (name, student_id, student_pw, age, git_address) values('김동선','KDS','qwer',29,'KDS01');
+insert into student (name, student_id, student_pw, age, git_address) values('이민규','qq752','1234',24,'hLEEMINGYU28/Java4.git');
+insert into student (name, student_id, student_pw, age, git_address) values('권원준','oooonx','may', 22,'KWWWJ/just1.git');
+insert into student (name, student_id, student_pw, age, git_address) values('박정완','pjw','qwer1', 27, 'pjw222/HomeWork2');
+insert into student (name, student_id, student_pw, age, git_address) values('한상윤','hsy','qwer1234',37,'Natseol');
+insert into student (name, student_id, student_pw, age, git_address) values('임현규','TLM','486',27,'mabiTLM/Java4');
+insert into student (name, student_id, student_pw, age, git_address) values('김남균','knk','12345',27,'LiamKim-0218/HomeWork2');
+insert into student (name, student_id, student_pw, age, git_address) values('임주한','LJH','3232',32,'Juhan008/java-D');
+
+create table hobby(
+    id number(10, 0) generated as identity CONSTRAINT pk_id_hobby PRIMARY KEY,
+    name varchar2(20),
+    explane varchar2(50),
+    create_at timestamp default sysdate,
+    average_time number(30, 0),
+    locate varchar2(50),
+    student_id number(8, 0),
+    constraint fk_hobby_student_1d foreign key (student_id) references student (id) 
+);
+
+insert into hobby (name, explane, average_time, locate, student_id) values('독서', '인터넷 상의 소설을 읽는다.', 3600000, '실내', 1);
+insert into hobby (name, explane, average_time, locate, student_id) values('헬스', '운동을 통해 근육을 늘리는 것', 3600000, '헬스장', 2);
+insert into hobby (name, explane, average_time, locate, student_id) values('커피제조', '다양한 종류의 커피 제조하기', 3600000, '집', 3);
+insert into hobby (name, explane, average_time, locate, student_id) values('탁구', '스포츠의 일종', 7200000, '탁구장', 4);
+insert into hobby (name, explane, average_time, locate, student_id) values('수면', '휴식', 14400000, '집', 5);
+
+
+--alter table student add constraint fk_student_hobby foreign key (hobby_id) references hobby (id); //1대1 관계 이거 없으면 1대 n관계
+
+create table student_hobby(
+    student_id number(8, 0),
+    hobby_id number(10, 0),
+    constraint fk_student_id foreign key (student_id) references student (id),
+    constraint fk_hobby_id foreign key (hobby_id) references hobby (id)
+    );
+    
+    insert into student_hobby values(1, 2);
+    insert into student_hobby values(1, 1);
+    insert into student_hobby values(1, 5);
+    insert into student_hobby values(2, 1);
+
+    select * from student join hobby on student.id = hobby.student_id;
+    select student.name as "학생", student.age as "나이", hobby.name as"취미" from student-- join hobby on student.id = hobby.student_id
+    cross join hobby;
+    //full, left, right
+    
+    select student.name as "학생" ,hobby.name as"취미" from student_hobby
+    join student on student.id = student_hobby.student_id
+    join hobby on hobby.id = student_hobby.hobby_id;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+     select * from student where rownum<=4 and name like '김%'; 
+     select * from student where name like '김%'; 
+
