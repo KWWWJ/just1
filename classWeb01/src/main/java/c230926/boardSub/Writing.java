@@ -18,9 +18,14 @@ import c230926.board.BoardVO;
  */
 @WebServlet("/writing")
 public class Writing extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+
        
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7579858135188396275L;
+
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public Writing() {
@@ -58,21 +63,31 @@ public class Writing extends HttpServlet {
 		html += "<br>";
 		html += "<h3>Contnt</h3>";
 		html += "<textarea row='10' name='content'></textarea>";
-		html += "<button>글작성</button>";
+		html += "<input type='button' id='btnAdd' value='확인'></button>";
 		html += "</form>";
 		html += "</body>";
 		html += "</head>";
 		html += "</html>";
 		response.setCharacterEncoding("UTF-8");
-		response.getWriter().append(html);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		String name = request.getParameter("name");
+	    String title = request.getParameter("title");
+	    String content = request.getParameter("content");
+	    String context = request.getContextPath();
+	    
+	    BoardDAO temp = new BoardDAO();
+	    
+	    temp.setContent(name, title, content);
+	    
+	    response.sendRedirect(context + "/board");
+	    
+
 	}
 
 }

@@ -1,8 +1,11 @@
 package c230926.board;
 
+
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,11 +14,6 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 public class BoardDAO {
-	public int id;
-	public String name;
-	public String title;
-	public String content;
-	public String createAt;
 	private Connection con;
 
 	public List<BoardVO> getList() {
@@ -50,7 +48,7 @@ public class BoardDAO {
 		return list;
 	}
 	
-	public BoardVO getStudent(String list) {
+	public BoardVO getBoard(String list) {
 		BoardVO temp = null;
 		try {
 			connect();
@@ -78,36 +76,83 @@ public class BoardDAO {
 		return temp;
 	}
 	
-	public BoardVO setContent() {
+	public BoardVO setContent(String name, String title, String content) {
 		BoardVO temp = null;
 		try {
 			connect();
+			con = DriverManager.getConnection(name, title, content);
+//				pstmt.setString(1, name);
+//				pstmt.setString(2, title);
+//				pstmt.setString(3, content);
 			
-			String query = "insert into board" 
-					+"(id, name, title, content, create_at)" 
-					+"values (?, ?, ?, ?)";
-			PreparedStatement pstmt = con.prepareStatement(query);
-//				System.out.println(rs.getInt("id"));
-				pstmt.setInt(1, id);
-				pstmt.setString(2, name);
-				pstmt.setString(3, title);
-				pstmt.setString(4, content);
-
-			pstmt.close();
 			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		
+		String query = "insert into board" 
+				+"(name, title, content)" 
+				+"values (?, ?, ?)";
+		PreparedStatement pstmt = null;
+		try {
+			
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, name);
+			pstmt.setString(2, title);
+			pstmt.setString(3, content);
+			int res = pstmt.executeUpdate(query);
+			if(res > 0) {
+				System.out.println("입력 성공");
+			}else {
+				System.out.println("입력 실패");
+			}
+			
+		}catch(Exception e) {
+				e.printStackTrace();
+			}
+		
+		
+		
 		return temp;
 	}
+//	
+//	public BoardVO deleteBoard(int id) {
+//	    BoardVO temp = null;
+//	    try {
+//	      connect();
+//	      String deleteQuery = "delete from board where id =?";
+//	      PreparedStatement pstmt = con.prepareStatement(deleteQuery);
+//	      pstmt.setInt(1, id);
+//	      pstmt.executeUpdate();
+//	      pstmt.close();
+//	      con.close();
+//	    } catch (Exception e) {
+//	      e.printStackTrace();
+//	    }
+//	    return temp;
+//	  }
+//	
+//	public BoardVO editBoard(int id, String title, String post) {
+//	    BoardVO temp = null;
+//	    try {
+//	      connect();
+//	      String updateQuery = "update board set title=? post=? where id = ?";
+//	      PreparedStatement pstmt = con.prepareStatement(updateQuery);
+//	      pstmt.setString(1, title);
+//	      pstmt.setString(2, post);
+//	      pstmt.setInt(3, id);
+//	      pstmt.executeUpdate();
+//	      pstmt.close();
+//	      con.close();
+//	    } catch (Exception e) {
+//	      e.printStackTrace();
+//	    }
+//	    return temp;
+//	  }
+
 	
 	private void connect() throws Exception{
-//		Class.forName("oracle.jdbc.OracleDriver");
-//		Connection con = DriverManager.getConnection(
-//				"jdbc:oracle:thin:@localhost:1521/xe",
-//				"c##oooonx",
-//				"qwer"
-//				);
 		Context ctx = new InitialContext(); //처음만드는 초기화된 콘텍스트
 		// initialize
 		Context envContext = (Context) ctx.lookup("java:/comp/env");

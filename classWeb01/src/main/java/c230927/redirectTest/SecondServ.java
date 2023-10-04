@@ -1,4 +1,4 @@
-package c230926.boardSub;
+package c230927.redirectTest;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,25 +10,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import c230926.board.BoardDAO;
-import c230926.board.BoardVO;
-
 /**
- * Servlet implementation class Content
+ * Servlet implementation class SeconServ
  */
-@WebServlet("/content")
-public class Content extends HttpServlet {
-	
+@WebServlet("/to")
+public class SecondServ extends HttpServlet {
+	private static final long serialVersionUID = 1L;
        
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = -5826812359780875910L;
-
-	/**
      * @see HttpServlet#HttpServlet()
      */
-    public Content() {
+    public SecondServ() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -45,30 +37,13 @@ public class Content extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		BoardDAO dao = new BoardDAO();
-		List<BoardVO> list = dao.getList();
-		System.out.println(list.size());
+		List<String> temp = (List) request.getAttribute("key"); //얘는 형태 정해줘야함
 		String html = "<html>";
 		html += "<head>";
 		html += "<meta charset='UTF-8' />";
-		html += "<title>";
-		html += "내용";
-		html += "</title>";
-		html += "<body>";
-
-		html += list.get(0).getcontent();
-		
-		html += "<form action='writing' method='post'>";
-		html += "<br>";
-		html += "<br>";
-		html += "<button>글수정</button>";
-		html += "</form>";
-
-		html += "</body>";
 		html += "</head>";
 		html += "</html>";
-		response.setCharacterEncoding("UTF-8");
-		response.getWriter().append(html);
+		response.getWriter().append("from => to end" + temp);
 	}
 
 	/**

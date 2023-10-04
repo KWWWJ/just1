@@ -17,4 +17,8 @@
   <servlet-name>a</servlet-name>
   <url-pattern>/first</url-pattern>
   </servlet-mapping>
+  <context-param>
+  <param-name>test_xml</param-name>
+  <param-value>this is test, for all pages can show this</param-value>
+  </context-param>
 </web-app>
