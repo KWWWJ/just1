@@ -7,6 +7,10 @@ public class StudentBean {
 	
 	public StudentBean(){} //꼭 하나는 필요하다
 	
+	public StudentBean(String name){
+		this.name = name;
+	}
+	
 	public void setName(String name) { 
 		this.name = name;
 	}
