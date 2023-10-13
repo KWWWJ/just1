@@ -1,9 +1,12 @@
-package c231012.user;
+package c231013;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import c231012.factory.DAOFactory;
+import c231013.factory.DAOFactory;
+import c231013.user.UserBean;
+import c231013.user.UserDAO;
+import c231013.user.UserInterface;
 
 // user의 DAO를 테스트
 public class Test {
@@ -16,7 +19,7 @@ public class Test {
 		// 이 과정에서 필요한 것이 factory의 클래스 자체.
 		// beanFactory도 이 안에 저장되어있다.
 		UserDAO dao = context.getBean("userDAO", UserDAO.class);
-		// UserDAO의 userDAO메서드를 가져오는 것을 해당 ccontext로 처리하여 변환.
+		// UserDAO의 userDAO메서드를 가져오는 것을 해당 context로 처리하여 변환.
 		// 이 경우 "userBean" 메서드만 가져오면 어떤 Bean중에서 가져와야할지 정확하지 않으므로, 클래스까지 지정해준 것. 
 		
 //		UserDAO dao1 = context.getBean("userDAO", UserDAO.class);
@@ -29,19 +32,20 @@ public class Test {
 //		System.out.println(dao3); //이 둘은 다르다.
 //		System.out.println(dao4);
 		
-		UserBean user = new UserBean();
-		user.setName("dao테스트");
-		user.setUserId("amg");
-		user.setPassword("qwer");
-		dao.add(user); //throws Exception 필요
+//		UserBean user = new UserBean();
+//		user.setName("12테스트");
+//		user.setUserId("amg");
+//		user.setPassword("qwer");
+//		dao.add(user); //throws Exception 필요
 		
-		System.out.println("추가 성공");
+//		System.out.println("추가 성공");
 		
-		UserBean createdUser = dao.get("amg");
+		UserInterface createdUser = dao.get("amg");
 		System.out.println(createdUser.getId());
 		System.out.println(createdUser.getName());
 		System.out.println(createdUser.getUserId());
 		System.out.println(createdUser.getPassword());
+		
 	}
 
 }

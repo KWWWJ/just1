@@ -1,7 +1,6 @@
-package c231012.user;
+package c231013.user;
 
-
-public class UserBean {
+public class UserBean implements UserInterface {
 	// 데이터를 매모리 내에 저장하는 클래스
 	private int id;
 	private String name;
