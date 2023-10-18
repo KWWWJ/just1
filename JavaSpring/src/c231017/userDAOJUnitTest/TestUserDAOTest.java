@@ -38,10 +38,10 @@ public class TestUserDAOTest {
 	
 	@After
 	public void dropTable() throws SQLException {
-		
+
 		dao.upgradeDrop();
 		System.out.println("user 테이블 삭제 성공");
-		
+	
 	}
 	
 	@Test
@@ -49,7 +49,7 @@ public class TestUserDAOTest {
 		
 		UserBean user = new UserBean();
 		user.setName("권원준");
-		user.setUserId("dnx3");
+		user.setUserId("dnx5");
 		user.setPassword("qwer");
 		dao.add(user);
 		System.out.println("추가 성공 addAndGet");

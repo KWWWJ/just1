@@ -55,7 +55,7 @@ public class TestUserDAO {
 		jdbcTemplate.execute("create table users (\r\n"
 				+" id number generated as identity primary key, \r\n"
 				+" name varchar2(20), \r\n"
-				+" user_id varchar2(50) not null, \r\n"
+				+" user_id varchar2(50) not null unique, \r\n"
 				+" password varchar2(64) not null \r\n"
 				+" )");
 	}
