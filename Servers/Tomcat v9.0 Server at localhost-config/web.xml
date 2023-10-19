@@ -120,14 +120,6 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
-    <servlet>
-		<servlet-name>tutorial</servlet-name>
-		<servlet-class>/tutorial</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>playerActionScript</servlet-name>
-		<servlet-class>/playerActionScript</servlet-class>
-	</servlet>
 
 
   <!-- The JSP page compiler and execution servlet, which is the mechanism  -->
