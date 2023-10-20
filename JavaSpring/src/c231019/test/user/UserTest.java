@@ -37,13 +37,13 @@ public class UserTest {
 		}
 
 		user1.setName("권원준");
-		user1.setUserId("dnx2");
+		user1.setUserId("kwj");
 		user1.setPassword("qwer");
 		dao.add(user1);
 
 	}
 	
-	@After
+//	@After
 	public void dropTable() {
 
 		testDao.upgradeDrop();
@@ -55,8 +55,8 @@ public class UserTest {
 	public void add() {
 
 		UserBean user = new UserBean();
-		user.setName("권원준");
-		user.setUserId("dnx5");
+		user.setName("권원우");
+		user.setUserId("kww");
 		user.setPassword("qwer");
 		dao.add(user);
 		System.out.println("추가 성공 addAndGet");
@@ -77,8 +77,8 @@ public class UserTest {
 	public void dropAndCreate() {
 
 		UserBean user = new UserBean();
-		user.setName("권원준");
-		user.setUserId("dnx4");
+		user.setName("아무개");
+		user.setUserId("amg");
 		user.setPassword("qwer");
 		dao.add(user);
 		System.out.println("추가 성공 addAndGet");

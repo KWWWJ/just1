@@ -6,6 +6,8 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
+import c231020.board.BoardBean;
+
 public class UserDAO {
 	
 	private JdbcTemplate jdbcTemplate;
@@ -13,6 +15,21 @@ public class UserDAO {
 	public void setDataSource(DataSource dataSource) {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
+	
+	private RowMapper<UserBean> mapper = new RowMapper<UserBean>() {
+		
+		@Override
+		public UserBean mapRow(ResultSet rs, int rowNum) throws SQLException {
+			// TODO Auto-generated method stub
+			UserBean user= new UserBean();
+			user.setId(rs.getInt("id"));
+			user.setName(rs.getString("name"));
+			user.setUserId(rs.getString("user_id"));
+			user.setPassword(rs.getString("password"));
+	
+			return user;
+		}
+	};
 	
 	public void add(UserBean user) {
 		
@@ -29,26 +46,20 @@ public class UserDAO {
 				user.getId());
 	}
 	
+	public UserBean get(int id) {
+		return jdbcTemplate.queryForObject(
+				"select * from users where id=?",
+				new Object[] {id}, 
+				mapper
+				);
+	}
+	
 	public UserBean get(String userId){
 //		jdbcTemplate.queryForInt("select from(*) from users");
 		
 		return jdbcTemplate.queryForObject(
 			"select * from users where user_id=?", 
 			new Object[] {userId},
-			new RowMapper<UserBean>() {
-
-				@Override //이 메서드는 RowMapper에 마우스를 올리고 add를 누르면 알아서 만들어주는 놈이다.
-				public UserBean mapRow(ResultSet rs, int rowNum) throws SQLException {
-					// TODO Auto-generated method stub
-					UserBean user= new UserBean();
-					user.setId(rs.getInt("id"));
-					user.setName(rs.getString("name"));
-					user.setUserId(rs.getString("user_id"));
-					user.setPassword(rs.getString("password"));
-							
-					return user;
-				}
-			}
-		);
+			mapper);
 	}
 }
