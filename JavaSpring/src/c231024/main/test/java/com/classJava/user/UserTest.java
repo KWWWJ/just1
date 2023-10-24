@@ -1,4 +1,4 @@
-package c231023.main.test.java.com.classJava.user;
+package c231024.main.test.java.com.classJava.user;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import c231023.main.java.com.classJava.user.dao.UserDAO;
-import c231023.main.java.com.classJava.user.domain.User;
+import c231024.main.java.com.classJava.user.dao.UserDAO;
+import c231024.main.java.com.classJava.user.domain.User;
 
 
 

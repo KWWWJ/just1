@@ -1,6 +1,6 @@
-package c231023.main.java.classJava.user.dao;
+package c231024.main.java.com.classJava.user.dao;
 
-import c231023.main.java.classJava.user.domain.User;
+import c231024.main.java.com.classJava.user.domain.User;
 
 public interface UserDAO {
 	

@@ -1,4 +1,4 @@
-package c231023.main.java.classJava.user.dao;
+package c231024.main.java.com.classJava.user.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,7 +8,7 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
-import c231023.main.java.classJava.user.domain.User;
+import c231024.main.java.com.classJava.user.domain.User;
 
 public class UserDAOJDBC implements UserDAO{
 	

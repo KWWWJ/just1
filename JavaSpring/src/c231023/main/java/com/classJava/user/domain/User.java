@@ -1,4 +1,4 @@
-package c231023.main.java.classJava.user.domain;
+package c231023.main.java.com.classJava.user.domain;
 
 import java.sql.Date;
 

@@ -12,10 +12,10 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 //import org.springframework.transaction.support.TransactionSynchronizationManager;
 
-import c231023.main.java.classJava.user.dao.UserDAO;
-import c231023.main.java.classJava.user.domain.User;
 import c231023.main.java.com.classJava.board.dao.BoardDAO;
 import c231023.main.java.com.classJava.board.domain.Board;
+import c231023.main.java.com.classJava.user.dao.UserDAO;
+import c231023.main.java.com.classJava.user.domain.User;
 
 public class BoardSevice {
 	private UserDAO userDAO;

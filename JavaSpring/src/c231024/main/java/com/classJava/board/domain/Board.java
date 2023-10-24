@@ -1,8 +1,8 @@
-package c231023.main.java.com.classJava.board.domain;
+package c231024.main.java.com.classJava.board.domain;
 
 import java.sql.Date;
 
-import c231023.main.java.com.classJava.user.domain.User;
+import c231024.main.java.com.classJava.user.domain.User;
 
 
 public class Board {

@@ -12,11 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import c231023.main.java.classJava.user.dao.UserDAO;
-import c231023.main.java.classJava.user.domain.User;
 import c231023.main.java.com.classJava.board.dao.BoardDAO;
 import c231023.main.java.com.classJava.board.domain.Board;
 import c231023.main.java.com.classJava.board.service.BoardSevice;
+import c231023.main.java.com.classJava.user.dao.UserDAO;
+import c231023.main.java.com.classJava.user.domain.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/c231023/main/dataSource.xml", "applicationContext.xml"})

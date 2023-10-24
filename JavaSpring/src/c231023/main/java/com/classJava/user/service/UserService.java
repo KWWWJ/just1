@@ -1,7 +1,7 @@
-package c231023.main.java.classJava.user.service;
+package c231023.main.java.com.classJava.user.service;
 
-import c231023.main.java.classJava.user.dao.UserDAO;
-import c231023.main.java.classJava.user.domain.User;
+import c231023.main.java.com.classJava.user.dao.UserDAO;
+import c231023.main.java.com.classJava.user.domain.User;
 
 public class UserService {
 	private UserDAO userDAO;
