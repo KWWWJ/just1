@@ -36,14 +36,14 @@ public class BoradTest {
 
 	@Before
 	public void initialize() {
-		boardServiceImpl.setUserService(new MockUserService()); // 다른방식에서는 두 줄 주석처리하기
-		((BoardServiceTx)boardService).setBoardService(boardServiceImpl);
+//		boardServiceImpl.setUserService(new MockUserService()); // 다른방식에서는 두 줄 주석처리하기
+//		((BoardServiceTx)boardService).setBoardService(boardServiceImpl);
 
 		boardDAO.deleteAll();
 		User user = userDAO.get("kwj");
-		boardService.add(new Board(user, "테스트1", "테스트1 내용"), 1);
-		boardService.add(new Board(user, "테스트2", "테스트2 내용"), 1);
-		boardService.add(new Board(user, "테스트3", "테스트3 내용"), 1);                                                             																							
+		boardService.add(new Board(user, "테스트1", "테스트1 내용"));
+		boardService.add(new Board(user, "테스트2", "테스트2 내용"));
+		boardService.add(new Board(user, "테스트3", "테스트3 내용"));                                                             																							
 	}
 
 	@Test
@@ -72,7 +72,7 @@ public class BoradTest {
 	@Test
 	public void add() {
 		Board board = new Board(userDAO.get("kwj"), "테스트 중입니다", "23년 10월 24일 테스트");
-		boardService.add(board, 1);
+		boardService.add(board);
 	}
 
 //	@Test
@@ -83,23 +83,23 @@ public class BoradTest {
 //		boardService.add(board);
 //	}
 
-	public static class MockUserService implements UserService{
-		@Override
-		public void add(User user) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		// 이걸로 add하려면 위에서 userId로 1을 넣는 로직을 모두 삭제하고 @Autowired한 BoardServiceImpl를 주석처리한 뒤 이미 주석처리된 test 메서드를 풀어 사용한다
-		public User get() {
-			return new User(1,"송성민", "ssm", "123", new Date(186438438));
-		}
-		
-		@Override
-		public boolean isLogin(int id) {
-			// TODO Auto-generated method stub
-			if(id == 1)return true;
-			return false;
-		}
-	}
+//	public static class MockUserService implements UserService{
+//		@Override
+//		public void add(User user) {
+//			// TODO Auto-generated method stub
+//			
+//		}
+//		
+//		// 이걸로 add하려면 위에서 userId로 1을 넣는 로직을 모두 삭제하고 @Autowired한 BoardServiceImpl를 주석처리한 뒤 이미 주석처리된 test 메서드를 풀어 사용한다
+//		public User get() {
+//			return new User(1,"송성민", "ssm", "123", new Date(186438438));
+//		}
+//		
+//		@Override
+//		public boolean isLogin(int id) {
+//			// TODO Auto-generated method stub
+//			if(id == 1)return true;
+//			return false;
+//		}
+//	}
 }

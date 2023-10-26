@@ -29,9 +29,10 @@ public class BoardServiceImpl implements BoardService{
 	
 	
 	
-	public void add(Board board, int userId) {
-		if(userService.isLogin(userId)) boardDAO.add(board);
-		else new RuntimeException("not log in");
+	public void add(Board board) {
+//		if(userService.isLogin(userId)) 
+		boardDAO.add(board);
+//		else new RuntimeException("not log in");
 	}
 
 	public Board get(int id) {

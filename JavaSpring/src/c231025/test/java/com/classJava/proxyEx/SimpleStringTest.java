@@ -20,7 +20,7 @@ public class SimpleStringTest {
 		SimpleString simpleString = new SimpleStringUpper();
 		((SimpleStringUpper) simpleString).setSimpleString(simpleStringImle);
 		assertThat(simpleString.hello("아무개"), is("HELLO 아무개"));
-		assertThat(simpleString.intor("아무개"), is("MY NAME IS 아무개"));
+		assertThat(simpleString.intro("아무개"), is("MY NAME IS 아무개"));
 		assertThat(simpleString.bye("아무개"), is("BYE 아무개"));
 	}
 	
@@ -31,7 +31,7 @@ public class SimpleStringTest {
 				new Class[] { SimpleString.class }, 
 				new ToUpperCaseHandler(new SimpleStringImpl()));
 		assertThat(ssProxied.hello("아무개"), is("HELLO 아무개"));
-		assertThat(ssProxied.intor("아무개"), is("My name is 아무개"));
+		assertThat(ssProxied.intro("아무개"), is("My name is 아무개"));
 		assertThat(ssProxied.bye("아무개"), is("Bye 아무개"));
 	}
 

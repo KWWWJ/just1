@@ -6,7 +6,7 @@ public class SimpleStringImpl implements SimpleString{
 		return "Hello " + name;
 	}
 
-	public String intor(String name) {
+	public String intro(String name) {
 		return "My name is " + name;
 	}
 

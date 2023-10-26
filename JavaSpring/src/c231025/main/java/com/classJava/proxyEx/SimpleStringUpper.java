@@ -11,8 +11,8 @@ public class SimpleStringUpper implements SimpleString{
 		return simpleString.hello(name).toUpperCase();
 	}
 
-	public String intor(String name) {
-		return simpleString.intor(name).toUpperCase();
+	public String intro(String name) {
+		return simpleString.intro(name).toUpperCase();
 	}
 	
 	public String bye(String name) {
