@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판</title>
+    <link rel="stylesheet" href="index.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>게시판 목록</h1>
+    <button class="button-size" onclick="location.href='/board/add'">글쓰기</button>
+    <ul id="list">
+     
+    </ul>
+    <li class="items none">
+      <div class="items-inner-box">
+        <div class="title" onclick="getId()"></div>
+        <div class="user">user : <span class="user-name"></span></div>
+      </div>
+    </li>
+    <script>
+        async function getList() {
+          const list = (await axios.post("/board", {})).data;
+          console.log(list);
+          const idList = [];
+          const listElem = document.getElementById("list");
+          const itemElemTemplate = document.getElementsByClassName("none")[0];
+          list.forEach((item) => {
+            const tempElem = itemElemTemplate.cloneNode(true);
+            console.log(tempElem);
+            tempElem.classList.remove("none");
+            tempElem.getElementsByClassName("title")[0].innerHTML = item.title;
+            tempElem.getElementsByClassName("user-name")[0].innerHTML = item.user;
+            idList.push(item.id);
+            listElem.append(tempElem);
+          });
+          console.log(idList);
+          const id = document.getElementsByClassName("title");
+          for (let index = 0; index < idList.length; index++) {
+            id[index].addEventListener('click', function(){
+              location.href = 'board/content?id='+idList[index];
+            })
+          }
+
+        }
+        getList();
+      </script>
+  </body>
+</html>

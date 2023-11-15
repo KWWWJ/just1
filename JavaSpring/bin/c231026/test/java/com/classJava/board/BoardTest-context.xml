@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="dataSource" 
+		class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="oracle.jdbc.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@Localhost:1521/xe"/>
+		<property name="username" value="oooonx"/>
+		<property name="password" value="qwer"/>
+	</bean>
+	<bean id="userDAO"
+		class="c231024.main.java.com.classJava.user.dao.UserDAOJDBC">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<bean id="boardDAO"
+		class="c231024.main.java.com.classJava.board.dao.BoardDAOJDBC">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<bean id="boardService"
+		class="c231024.main.java.com.classJava.board.service.BoardServiceImpl">
+		<property name="userDAO" ref="userDAO"/>
+		<property name="boardDAO" ref="boardDAO"/>
+	</bean>
+	
+	
+	<!-- Transaction Proxy FactoryBean  -->
+	<!--  <bean id="boardService"
+		class="c231026.main.java.com.classJava.board.service.TxProxyFactoryBean">
+		<property name="target" ref="boardServiceImpl"/>
+		<property name="pattern" value="update"/>
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="serviceInterface" 
+			value="c231024.main.java.com.classJava.board.service.BoardService"/>
+	</bean>-->
+	
+	
+	<!-- Transaction ProxyFactoryBean  -->
+	<!-- 
+	<bean id="transactionAdvice"
+		class="c231026.main.java.com.classJava.board.service.TransactionAdvice">
+		<property name="transactionManager" ref="transactionManager"/>
+	</bean>
+	<bean id="transactionPointcut"
+		class="org.springframework.aop.support.NameMatchMethodPointcut">
+		<property name="mappedName" value="update*"/>
+	</bean>
+	<bean id="transactionAdviser"
+		class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="transactionAdvice"/>
+		<property name="pointcut" ref="transactionPointcut"/>
+	</bean>	
+	<bean id="boardService" 
+		class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="boardServiceImpl"/>
+		<property name="interceptorNames">
+			<list>
+				<value>transactionAdviser</value> 
+			</list>
+		</property>
+	</bean>
+	 -->
+	 
+	 
+	<!-- Auto ProxyFactoryBean -->
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
+	</bean>
+	<bean id="transactionAdvice"
+		class="c231026.main.java.com.classJava.board.service.TransactionAdvice">
+		<property name="transactionManager" ref="transactionManager"/>
+	</bean>
+	<bean id="transactionPointcut"
+		class="c231026.main.java.com.classJava.board.service.TransactionPointcut">
+		<property name="mappedName" value="update*"/>
+		<property name="mappedClassName" value="*ServiceImpl"/>
+	</bean>
+	<bean id="transactionAdvisor"
+		class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="transactionAdvice"/>
+		<property name="pointcut" ref="transactionPointcut"/>
+	</bean>	
+	<!-- 만약 로그를 남기는 Advisor를 만든다 하면 pointcut을 넣지 않고 모든 기록을 저장하는 Advice를 작성해 넣으면 된다. -->
+	
+</beans>

@@ -57,7 +57,7 @@ public class Board extends HttpServlet {
 		html += "글목록";
 		html += "</title>";
 		html += "<body>";
-		html += "<h3>글 목록</h3>";
+		html += "<h6>글 목록</h6>";
 		html += "<form action='writing' method='get'>";
 		html += "<button>글쓰기</button>";
 		html += "</form>";

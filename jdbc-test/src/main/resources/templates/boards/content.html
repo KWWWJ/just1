@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="title"></div>
+    <div class="user">user : <span class="user-name"></span></div>
+    <div class="content"></div>
+
+    <script>
+        async function getcontent() {
+            const idUrl = new URL(location.href).searchParams;
+            const id = idUrl.get('id');
+            console.log(idUrl.get('id'));
+            
+            const params = new URLSearchParams();
+            params.append('id', id);
+
+            const postContent = await axios.post('/board/content', null, {params:params});
+            console.log(postContent.data);
+            console.log(postContent.data.title);
+            console.log(postContent.data.user);
+            console.log(postContent.data.content);
+
+            // axios({
+            //     method: 'post',
+            //     url: '/board/content'
+            // })
+            // .then(function(response){
+
+            // })
+    
+            document.getElementsByClassName("title")[0].innerHTML = postContent.data.title;
+            document.getElementsByClassName("user-name")[0].innerHTML = postContent.data.user;
+            document.getElementsByClassName("content")[0].innerHTML = postContent.data.content;
+        }
+        getcontent();
+    </script>
+</body>
+</html>

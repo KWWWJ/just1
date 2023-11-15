@@ -1626,11 +1626,11 @@
         <mime-type>image/x-freehand</mime-type>
     </mime-mapping>
     <mime-mapping>
-        <extension>fh5</extension>
+        <extension>fh6</extension>
         <mime-type>image/x-freehand</mime-type>
     </mime-mapping>
     <mime-mapping>
-        <extension>fh7</extension>
+        <extension>fh6</extension>
         <mime-type>image/x-freehand</mime-type>
     </mime-mapping>
     <mime-mapping>

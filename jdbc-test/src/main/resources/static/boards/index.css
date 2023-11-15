@@ -1,0 +1,29 @@
+.none {
+    display: none;
+}
+
+#list{
+    width: 500px;
+}
+
+.itmes{
+    width: 90%;
+}
+
+.itmes .title{
+    font-size: 2rem;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.items-inner-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-size {
+    width: 100px;
+    background-color: white;
+    height: 20px;
+}

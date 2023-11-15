@@ -19,7 +19,7 @@
 </style>
 </head>
 <body>
-	<h3>오픈마켓</h3>
+	<h6>오픈마켓</h6>
 	<h2>과일 상품 목록 리스트</h2>
 	<div id="apple">
 		<div>

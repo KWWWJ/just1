@@ -57,11 +57,11 @@ public class Writing extends HttpServlet {
 		html += "<body>";
 		html += "<form action='board' method='post'>";
 		html += "<input type='text' name='name' placeholder='Name' />";
-		html += "<h3>Title</h3>";
+		html += "<h6>Title</h6>";
 		html += "<textarea row='10' name='title'></textarea>";
 		html += "<br>";
 		html += "<br>";
-		html += "<h3>Contnt</h3>";
+		html += "<h6>Contnt</h6>";
 		html += "<textarea row='10' name='content'></textarea>";
 		html += "<input type='button' id='btnAdd' value='확인'></button>";
 		html += "</form>";
