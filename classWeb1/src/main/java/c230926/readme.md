@@ -6,11 +6,11 @@
 - 값은 변하지 않는다.(변수가 변화하지만 값 자체는 변하지 않는다.)
 - getter만 있다.
 
-##DAO
+## DAO
 - Data Access Object
 - 데이터 접속 객체, DB에 요청을 보내기 위핸 객체.
 
-##DTO
+## DTO
 - Data Transfer Object
 - 계층(라우더)간에 데이터 전송을 보내기 위해 사용하는 객체.
 
